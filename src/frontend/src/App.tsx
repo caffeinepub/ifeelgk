@@ -512,8 +512,8 @@ function SocialSection() {
   const socials = [
     {
       label: "Instagram",
-      handle: "@ifeelgk",
-      href: "https://www.instagram.com/ifeelgk",
+      handle: "@ifeelgk_",
+      href: "https://www.instagram.com/ifeelgk_",
       icon: <SiInstagram size={32} />,
       ocid: "social.item.1",
     },
@@ -658,7 +658,7 @@ function ContactSection() {
         {/* Instagram DM CTA */}
         <div className="fade-in-up fade-in-up-delay-2 flex justify-center mb-12">
           <a
-            href="https://www.instagram.com/ifeelgk"
+            href="https://www.instagram.com/ifeelgk_"
             target="_blank"
             rel="noopener noreferrer"
             data-ocid="contact.primary_button"
@@ -799,7 +799,7 @@ function Footer() {
 
   const socials = [
     {
-      href: "https://www.instagram.com/ifeelgk",
+      href: "https://www.instagram.com/ifeelgk_",
       icon: <SiInstagram size={16} />,
       label: "Instagram",
     },
