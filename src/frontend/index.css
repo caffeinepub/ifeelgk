@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- Self-hosted fonts ---- */
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('/assets/fonts/CabinetGrotesk-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'General Sans';
+  src: url('/assets/fonts/GeneralSans-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    /* Dark hip-hop theme — always dark */
+    --radius: 0.25rem;
+
+    /* Background: near-black with a very slight blue tint */
+    --background: 0.08 0.005 285;
+    /* Foreground: warm off-white */
+    --foreground: 0.97 0.005 85;
+
+    /* Card: dark charcoal */
+    --card: 0.12 0.005 285;
+    --card-foreground: 0.97 0.005 85;
+
+    /* Popover */
+    --popover: 0.15 0.005 285;
+    --popover-foreground: 0.97 0.005 85;
+
+    /* Primary: neon gold/yellow — the signature accent */
+    --primary: 0.82 0.18 85;
+    --primary-foreground: 0.08 0.005 285;
+
+    /* Secondary */
+    --secondary: 0.18 0.005 285;
+    --secondary-foreground: 0.97 0.005 85;
+
+    /* Muted */
+    --muted: 0.16 0.005 285;
+    --muted-foreground: 0.55 0.005 285;
+
+    /* Accent: same as primary */
+    --accent: 0.82 0.18 85;
+    --accent-foreground: 0.08 0.005 285;
+
+    /* Destructive */
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    /* Border: subtle dark */
+    --border: 0.25 0.005 285;
+    --input: 0.22 0.005 285;
+    --ring: 0.82 0.18 85;
+
+    /* Charts */
+    --chart-1: 0.82 0.18 85;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+
+    /* Sidebar */
+    --sidebar: 0.10 0.005 285;
+    --sidebar-foreground: 0.97 0.005 85;
+    --sidebar-primary: 0.82 0.18 85;
+    --sidebar-primary-foreground: 0.08 0.005 285;
+    --sidebar-accent: 0.16 0.005 285;
+    --sidebar-accent-foreground: 0.97 0.005 85;
+    --sidebar-border: 0.25 0.005 285;
+    --sidebar-ring: 0.82 0.18 85;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'General Sans', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  /* font-display: Cabinet Grotesk heavy weight for bold hip-hop headings */
+  .font-display {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+  }
+
+  /* font-condensed: Cabinet Grotesk medium weight for labels/subheadings */
+  .font-condensed {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-weight: 600;
+  }
+
+  /* font-body: General Sans for body text */
+  .font-body {
+    font-family: 'General Sans', sans-serif;
+  }
+
+  .text-neon-glow {
+    text-shadow:
+      0 0 20px oklch(var(--primary) / 0.7),
+      0 0 40px oklch(var(--primary) / 0.4),
+      0 0 80px oklch(var(--primary) / 0.2);
+  }
+
+  .text-neon-glow-sm {
+    text-shadow:
+      0 0 10px oklch(var(--primary) / 0.6),
+      0 0 20px oklch(var(--primary) / 0.3);
+  }
+
+  .neon-border {
+    box-shadow:
+      0 0 10px oklch(var(--primary) / 0.3),
+      0 0 20px oklch(var(--primary) / 0.15),
+      inset 0 0 10px oklch(var(--primary) / 0.05);
+  }
+
+  .neon-border-hover {
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .neon-border-hover:hover {
+    box-shadow:
+      0 0 15px oklch(var(--primary) / 0.5),
+      0 0 30px oklch(var(--primary) / 0.25),
+      0 0 60px oklch(var(--primary) / 0.1);
+    border-color: oklch(var(--primary));
+  }
+
+  .grain-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .section-scroll-margin {
+    scroll-margin-top: 80px;
+  }
+
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade-in-up-delay-1 {
+    transition-delay: 0.1s;
+  }
+  .fade-in-up-delay-2 {
+    transition-delay: 0.2s;
+  }
+  .fade-in-up-delay-3 {
+    transition-delay: 0.3s;
+  }
+  .fade-in-up-delay-4 {
+    transition-delay: 0.4s;
+  }
+  .fade-in-up-delay-5 {
+    transition-delay: 0.5s;
+  }
+}
